@@ -1,0 +1,3 @@
+[submodule "simple-webapp"]
+	path = simple-webapp
+	url = https://github.com/adrgs/simple-webapp
