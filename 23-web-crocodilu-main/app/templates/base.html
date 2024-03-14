@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Add Bootstrap from a CDN -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh">
+    <link rel="stylesheet" href="/static/css/app.css">
+
+    <!-- Set light green as the primary color -->
+    <style>
+      :root {
+        --primary-color: #8BC34A;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Add a navigation bar -->
+    {% include 'navbar.html' %}
+
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+  </body>
+</html>

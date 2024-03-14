@@ -1,0 +1,28 @@
+version: '3'
+services:
+  web:
+    build: app/.
+    command: flask run --host=0.0.0.0
+    env_file:
+      - .env.app
+    depends_on:
+      - redis
+  redis:
+    image: redis
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+  bot:
+    platform: linux/x86_64
+    build: bot/.
+    env_file:
+      - .env.bot
+    restart: on-failure:5
+    depends_on:
+      - redis
+      - nginx

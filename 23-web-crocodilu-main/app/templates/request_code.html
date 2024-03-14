@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Request Password Recovery Code{% endblock %}
+
+{% block content %}
+    <h1>Request Password Recovery Code</h1>
+    {% if error %}
+    <div class="alert alert-danger" role="alert">{{ error }}</div>
+    {% endif %}
+    <form method="post">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Request Code</button>
+    </form>
+    <p>Remembered your password? <a href="{{ url_for('login') }}">Log in</a></p>
+{% endblock %}

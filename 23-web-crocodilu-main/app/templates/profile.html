@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    <h1>{{ user.name }}'s Posts</h1>
+    <ul class="list-group">
+        {% for post in posts %}
+        <li class="list-group-item">
+            <a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a>
+            <span class="float-right">{{ post.date_posted.strftime('%Y-%m-%d') }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

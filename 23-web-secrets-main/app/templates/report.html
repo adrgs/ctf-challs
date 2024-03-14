@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Report{% endblock %}
+
+{% block content %}
+    <h1>Report</h1>
+    {% if error %}
+    <div class="alert alert-danger" role="alert">{{ error }}</div>
+    {% endif %}
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input type="text" class="form-control" id="url" name="url" value="http://" required>
+        </div>
+        {% if form.captcha %}
+            {{ form.captcha }}
+        {% endif %}
+        <button type="submit" class="btn btn-primary">Report</button>
+    </form>
+    <p>Already have an account? <a href="http://secrets.wtl.pw{{ url_for('login') }}">Login</a></p>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <form method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.title.label(class="form-control-label") }}
+            {% if form.title.errors %}
+                {{ form.title(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.title.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.title(class="form-control") }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="content">Content</label>
+            {% if form.content.errors %}
+                {{ form.content(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.content.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.content(class="form-control") }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+    <script src="/static/js/create_post.js" integrity="sha384-mLAibI/RySskHWM6xKtOuncWHNcuxAy5koOQgctn+U+vnHl1pFn8WX4qawL9LiWY"></script>
+{% endblock %}

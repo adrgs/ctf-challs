@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>secrets</h1>
+<p>Keeping your notes secret since '89</p>
+<span style="color:red" id="search-output"></span>
+
+<ul class="list-group">
+    {% for post in posts %}
+    <li class="list-group-item">
+        <a>{{ post.title | safe }}</a>
+        <span class="float-right">{{ post.date_posted.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+        <code>{{post.content | safe }}</code>
+    </li>
+    {% endfor %}
+</ul>
+<script>
+    // on hash change
+    if (window.location.hash) {
+        var hash = window.location.hash;
+        document.getElementById("search-output").innerText = 'No notes found containing: ' + hash.substring(1);
+    }
+    window.onhashchange = function() {
+        // get hash
+        var hash = window.location.hash;
+        // if hash is not empty
+        if (hash) {
+            // get element with id of hash
+            document.getElementById("search-output").innerText = 'No notes found containing: ' + hash.substring(1);
+        }
+    };
+</script>
+{% endblock %}
